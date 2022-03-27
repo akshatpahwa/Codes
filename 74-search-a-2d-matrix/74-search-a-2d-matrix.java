@@ -1,15 +1,16 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        for(int i = 0; i < matrix.length; i++){
-            if(target >= matrix[i][0] && target <= matrix[i][matrix[i].length-1])
-                return search(matrix, i, 0, target);
-        }
-        return false;
-    }
-    public boolean search(int[][] matrix, int i, int j, int target){
-        for(int col = 0; col < matrix[i].length; col++){
-            if(matrix[i][col] == target)
+        int row = matrix.length, col = matrix[0].length;
+        int left = 0, right = row * col - 1;
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+            int mid_point = matrix[mid/col][mid%col];
+            if(mid_point == target)
                 return true;
+            else if(mid_point < target)
+                left = mid + 1;
+            else
+                right = mid - 1;
         }
         return false;
     }
