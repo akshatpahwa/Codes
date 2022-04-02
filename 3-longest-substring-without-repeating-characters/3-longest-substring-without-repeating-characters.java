@@ -5,7 +5,7 @@ class Solution {
         int length = s.length();
         while(right < length){
             if(map.containsKey(s.charAt(right)))
-            left = Math.max(map.get(s.charAt(right))+1,left);
+                left = Math.max(map.get(s.charAt(right))+1,left);
             map.put(s.charAt(right),right);
             max = Math.max(max, right - left + 1);
             right++;
