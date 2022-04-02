@@ -22,6 +22,7 @@ class Solution {
             list2.next = mergeTwoLists(list1, list2.next);
             return list2;
         }
+        //O(n+m)-tc;  O(n+m)-space
     }
 }
         /*ListNode head = new ListNode(0);
@@ -42,5 +43,6 @@ class Solution {
         if(list2 != null)
             result.next = list2;
         return head.next;
+        //O(n+m)-tc;  O(1)-space
     }
 }*/
