@@ -1,6 +1,6 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        Arrays.sort(nums);
+        //Arrays.sort(nums);
         List<List<Integer>> list = new ArrayList<>();
         backtracking(nums, list, new ArrayList<>(), 0);
         return list;
