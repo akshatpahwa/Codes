@@ -8,11 +8,8 @@ class Solution {
     public void backtrack(List<List<Integer>> list, int[] candidates,int start, List<Integer> tempList, int target){
         if(target < 0)
             return;
-        else if(target == 0){
-            Collections.sort(tempList);
-            if(!list.contains(tempList))
-                list.add(new ArrayList<>(tempList));
-        }
+        else if(target == 0)
+            list.add(new ArrayList<>(tempList));
         else{
             for(int i = start; i < candidates.length; i++){
                 if(i > start && candidates[i] == candidates[i-1]) continue;
