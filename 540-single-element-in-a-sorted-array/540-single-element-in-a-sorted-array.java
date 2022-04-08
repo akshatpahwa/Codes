@@ -1,16 +1,13 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        HashSet<Integer> set = new HashSet<>();
-        for(int num : nums){
-            if(set.contains(num))
-                set.remove(num);
+        int left = 0, right = nums.length - 1;
+        while(left < right){
+            int mid = left + (right - left) / 2;
+            if((mid % 2 == 0 && nums[mid] == nums[mid+1]) || (mid % 2 == 1 && nums[mid] == nums[mid-1]))
+                left = mid + 1;
             else
-                set.add(num);
+                right = mid;
         }
-        for(int num : nums){
-            if(set.contains(num))
-                return num;
-        }
-        return -1;
+        return nums[left];
     }
 }
