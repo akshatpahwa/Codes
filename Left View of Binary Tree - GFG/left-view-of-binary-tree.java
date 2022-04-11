@@ -126,16 +126,18 @@ class Tree
     ArrayList<Integer> leftView(Node root)
     {
         ArrayList<Integer> list = new ArrayList<>();
-        leftside(list, root, 1);
+        leftside(list, root, 0);
         return list;
     }
     public void leftside(List<Integer> list, Node root, int level){
         if(root == null)
             return;
-        if(max_level < level){
+        if(level == list.size())
             list.add(root.data);
-            max_level = level;
-        }
+        // if(max_level == level){
+        //     list.add(root.data);
+        //     max_level = level;
+        // }
         leftside(list, root.left, level+1);
         leftside(list, root.right, level+1);
     }
