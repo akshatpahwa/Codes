@@ -22,8 +22,10 @@ class Solution {
     public void looping(List<String> list, String path, TreeNode root){
         // if(root == null)
         //     return;
-        if(root.left == null && root.right == null)
+        if(root.left == null && root.right == null){
             list.add(path + root.val);
+            return;
+        }
         if(root.left != null)
             looping(list, path + root.val + "->", root.left);
         if(root.right != null)
