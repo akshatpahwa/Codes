@@ -1,5 +1,5 @@
 class LRUCache {
-    Map<Integer, DLinkedNode> cache;
+Map<Integer, DLinkedNode> cache;
     int size;
     int capacity;
     DLinkedNode head;
