@@ -12,19 +12,18 @@ class Solution {
         for(int num : nums){
             map.put(num, map.getOrDefault(num,0)+1);
         }
-        for(int key : map.keySet()){
-            pq.add(key);
-        }
+        pq.addAll(map.keySet());
+        // for(int key : map.keySet()){
+        //     pq.add(key);
+        // }
         for(int i = 0; i < arr.length; i++){
             if(pq.peek() == null)
                 return arr;
-            int temp = pq.peek();
+            int temp = pq.poll();
             while(map.get(temp) > 0){
                 map.put(temp, map.getOrDefault(temp, 0) - 1);
                 arr[j++] = temp;
-                //System.out.println(arr[j-1]);
             }
-            pq.poll();
         }
         return arr;
     }
