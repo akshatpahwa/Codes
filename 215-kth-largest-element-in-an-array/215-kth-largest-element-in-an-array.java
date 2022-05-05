@@ -6,7 +6,7 @@ class Solution {
             if(pq.size() > k)
                 pq.poll();
         }
-        return pq.peek();
+        return pq.poll();
        /* Arrays.sort(nums);
         int temp = 0;
         for(int i = nums.length-1; i >= 0; i--){
