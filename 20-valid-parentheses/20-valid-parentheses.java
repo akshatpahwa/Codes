@@ -8,16 +8,9 @@ class Solution {
                 stack.push('}');
             else if(c == '[')
                 stack.push(']');
-            else{
-                if(stack.size() == 0)
-                    return false;
-                char temp = stack.pop();
-                if(temp != c)
-                    return false;
-            }
+            else if(stack.isEmpty() || stack.pop() != c)
+                return false;
         }
-        if(!stack.isEmpty())
-            return false;
-        return true;
+        return stack.isEmpty();
     }
 }
