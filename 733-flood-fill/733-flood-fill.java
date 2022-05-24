@@ -1,17 +1,16 @@
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        int temp = image[sr][sc];
-        if(temp != newColor)
-            helper(image, sr, sc, newColor, temp);
+        int color = image[sr][sc];
+        dfs(image, sr, sc, newColor, color);
         return image;
     }
-    public void helper(int[][] image, int i, int j, int val, int temp){
-        if(i < 0 || j < 0 || i >= image.length || j >= image[0].length || image[i][j] != temp)
+    public void dfs(int[][] image, int sr, int sc, int newColor, int oldColor){
+        if(sr < 0 || sr > image.length-1 || sc < 0 || sc > image[0].length-1 || image[sr][sc] == newColor || image[sr][sc] != oldColor)
             return;
-        image[i][j] = val;
-        helper(image, i + 1, j, val, temp);
-        helper(image, i, j + 1, val, temp);
-        helper(image, i, j - 1, val, temp);
-        helper(image, i - 1, j, val, temp);
+        image[sr][sc] = newColor;
+        dfs(image, sr-1, sc, newColor, oldColor);
+        dfs(image, sr, sc-1, newColor, oldColor);
+        dfs(image, sr+1, sc, newColor, oldColor);
+        dfs(image, sr, sc+1, newColor, oldColor);
     }
 }
