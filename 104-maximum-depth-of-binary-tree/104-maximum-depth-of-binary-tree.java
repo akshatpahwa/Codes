@@ -14,18 +14,20 @@
  * }
  */
 class Solution {
-    int max_level = 1;
+    int max = 0;
     public int maxDepth(TreeNode root) {
         if(root == null)
             return 0;
-        helper(root, 1);
-        return max_level;
+        int count = helper(root, 1);
+        return count;
     }
-    public void helper(TreeNode root, int level){
-        max_level = Math.max(max_level, level);
-        if(root.left != null)
-            helper(root.left, level+1);
-        if(root.right != null)
-            helper(root.right, level+1);
+    public int helper(TreeNode root, int count){
+        if(root == null)
+            return count;
+        System.out.println(count);
+        helper(root.left, count+1);
+        helper(root.right, count+1);
+        max = Math.max(max, count);
+        return max;
     }
 }
