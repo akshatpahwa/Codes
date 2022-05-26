@@ -21,6 +21,10 @@ class Solution {
             return false;
         if(p.val != q.val)
             return false;
-        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+        boolean b1 = isSameTree(p.left, q.left);
+        boolean b2 = isSameTree(p.right, q.right);
+        if(b1 == false || b2 == false)
+            return false;
+        return true;
     }
 }
