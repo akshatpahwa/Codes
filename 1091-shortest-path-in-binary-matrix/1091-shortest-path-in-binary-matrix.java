@@ -6,13 +6,12 @@ class Solution {
         if(row == 1 && col == 1 && grid[0][0] == 0)
             return 1;
         
-        if(grid[0][0] == 0)
-            queue.offer(new int[]{0,0});
-        
-        if(queue.size() == 0 || grid[row-1][col-1] != 0)
+        if(grid[row-1][col-1] != 0 || grid[0][0] != 0)
             return -1; 
         
+        queue.offer(new int[]{0,0});
         int[][] dirs = {{0,1},{0,-1},{1,0},{-1,0},{1,1},{-1,-1},{-1,1},{1,-1}};
+        
         while(!queue.isEmpty()){
             int size = queue.size();
             for(int i = 0; i < size; i++){
