@@ -18,8 +18,9 @@ class Solution {
         return components-1;
     }
     private int findParent(int[] parent, int i){
-        while(i != parent[i])
+        while(i != parent[i]){
             i = parent[i];
+        }
         return i;
     }
 }
