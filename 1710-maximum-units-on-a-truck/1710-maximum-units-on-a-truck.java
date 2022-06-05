@@ -13,6 +13,7 @@ class Solution {
                 int val = truckSize * temp[1];
                 truckSize = 0;
                 result += val;
+                return result;
             }
         }
         return result;
