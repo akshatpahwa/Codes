@@ -20,14 +20,13 @@ class Solution {
         
         if(ch == word.length() - 1){
             result = true;
-            System.out.println(ch);    
             return;
         }
-        board[i][j] = '*';
+        board[i][j] ^= 256;
         dfs(board, row, col, i - 1, j, word, ch+1);
         dfs(board, row, col, i, j - 1, word, ch+1);
         dfs(board, row, col, i + 1, j, word, ch+1);
         dfs(board, row, col, i, j + 1, word, ch+1);
-        board[i][j] = word.charAt(ch);
+        board[i][j] ^= 256;
     }
 }
