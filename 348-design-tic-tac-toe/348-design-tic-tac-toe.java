@@ -3,7 +3,9 @@ class TicTacToe {
     int[] cols;
     int diagonal;
     int antidiagonal;
+    int n;
     public TicTacToe(int n) {
+        this.n = n;
         rows = new int[n];
         cols = new int[n];
     }
@@ -16,7 +18,7 @@ class TicTacToe {
             diagonal += current_player;
         if(col == cols.length - row - 1)
             antidiagonal += current_player;
-        int n = rows.length;
+        //int n = rows.length;
         if(Math.abs(rows[row]) == n || Math.abs(cols[col]) == n || Math.abs(diagonal) == n || Math.abs(antidiagonal) == n)
             return player;
         return 0;
