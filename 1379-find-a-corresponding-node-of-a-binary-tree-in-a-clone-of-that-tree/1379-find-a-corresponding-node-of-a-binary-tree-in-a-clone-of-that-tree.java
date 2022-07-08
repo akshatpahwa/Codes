@@ -17,9 +17,9 @@ class Solution {
     }
     public void inorder(TreeNode original, TreeNode cloned){
         if(original != null){
-            inorder(original.left, cloned.left);
             if(original == target)
                 ans = cloned;
+            inorder(original.left, cloned.left);
             inorder(original.right, cloned.right);
         }
     }
