@@ -11,6 +11,6 @@ class Solution {
         ListNode after = node.next;
         node.val = after.val;
         node.next = after.next;
-        after.next = null;
+        //after.next = null;
     }
 }
