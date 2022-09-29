@@ -6,7 +6,7 @@ class LRUCache {
     
     class Node{
         int key, value;
-        Node prev;
+        Node pre;
         Node next;
     }
     
@@ -19,14 +19,13 @@ class LRUCache {
         head.next = tail;
         tail.next = null;
         
-        head.prev = null;
-        tail.prev = head;
+        head.pre = null;
+        tail.pre = head;
     }
     
     public int get(int key) {
-        if(!cache.containsKey(key)){
+        if(!cache.containsKey(key))
             return -1;
-        }
         Node node = cache.get(key);
         remove(node);
         movetohead(node);
@@ -34,17 +33,17 @@ class LRUCache {
     }
     
     public void put(int key, int value) {
-        Node existing_node = cache.get(key);
-        if(existing_node != null){
-            remove(existing_node);
+        Node node = cache.get(key);
+        if(cache.containsKey(key)){
+            remove(node);
             size--;
         }
-        Node node = new Node();
-        node.key = key;
-        node.value = value;
-        cache.put(key, node);
+        Node new_node = new Node();
+        new_node.key = key;
+        new_node.value = value;
+        cache.put(key, new_node);
         
-        movetohead(node);
+        movetohead(new_node);
         size++;
         
         if(size > capacity)
@@ -52,22 +51,23 @@ class LRUCache {
     }
     
     public void remove(Node node){
+        Node pre = node.pre;
         Node next = node.next;
-        Node prev = node.prev;
-        prev.next = next;
-        next.prev = prev;
+        pre.next = next;
+        next.pre = pre;
     }
     
     public void movetohead(Node node){
         node.next = head.next;
-        head.next.prev = node;
-        node.prev = head;
+        head.next.pre = node;
+        node.pre = head;
         head.next = node;
     }
+    
     public void poptail(){
-        Node last = tail.prev;
-        remove(last);
-        cache.remove(last.key);
+        Node node = tail.pre;
+        remove(node);
+        cache.remove(node.key);
         size--;
     }
 }
