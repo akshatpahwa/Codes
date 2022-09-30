@@ -11,8 +11,8 @@ class LRUCache {
     }
     
     public LRUCache(int capacity) {
-        this.capacity = capacity;
         cache = new HashMap<>();
+        this.capacity = capacity;
         head = new Node();
         tail = new Node();
         
@@ -58,16 +58,16 @@ class LRUCache {
     }
     
     public void movetohead(Node node){
+        node.pre = head;
         node.next = head.next;
         head.next.pre = node;
-        node.pre = head;
         head.next = node;
     }
     
     public void poptail(){
-        Node node = tail.pre;
-        remove(node);
-        cache.remove(node.key);
+        Node last = tail.pre;
+        remove(last);
+        cache.remove(last.key);
         size--;
     }
 }
