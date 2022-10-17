@@ -34,26 +34,27 @@ class MyLinkedList {
     public void addAtIndex(int index, int val) {
         if(index > size || index < 0) 
             return;
-        // if(index < 0) 
-        //     index = 0;
-        ++size;
-        Node pred = head;
-        for(int i = 0; i < index; ++i) 
-            pred = pred.next;
+        Node current = head;
+        
+        for(int i = 0; i < index; ++i){
+            current = current.next;
+        }
+        
         Node toAdd = new Node(val);
-        toAdd.next = pred.next;
-        pred.next = toAdd;
+        toAdd.next = current.next;
+        current.next = toAdd;
+        ++size;
     }
     
     public void deleteAtIndex(int index) {
         if (index >= size || index < 0) 
             return;
-        size--;
         Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
         current.next = current.next.next;
+        size--;
     }
 }
 
