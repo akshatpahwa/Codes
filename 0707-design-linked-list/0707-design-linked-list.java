@@ -17,7 +17,7 @@ class MyLinkedList {
         if (index >= size || index < 0) 
             return -1;
         Node current = head;
-        for (int i = 0; i < index+1; i++) {
+        for (int i = 0; i <= index; i++) {
             current = current.next;
         }
         return current.val;
@@ -32,10 +32,10 @@ class MyLinkedList {
     }
     
     public void addAtIndex(int index, int val) {
-        if(index > size) 
+        if(index > size || index < 0) 
             return;
-        if(index < 0) 
-            index = 0;
+        // if(index < 0) 
+        //     index = 0;
         ++size;
         Node pred = head;
         for(int i = 0; i < index; ++i) 
