@@ -5,7 +5,7 @@ class Solution {
         for(int num : nums){
             set.add(num);
         }
-        while(count < 1000000){
+        while(count <= nums.length){
             if(!set.contains(count))
                 return count;
             count++;
